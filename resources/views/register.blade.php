@@ -27,7 +27,7 @@
 
             </div>
 
-            <form action="" method="POST">
+            <form action="{{route("register")}}" method="POST">
                 @csrf
 
               <div class="mb-3">
