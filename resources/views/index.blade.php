@@ -8,8 +8,7 @@
     <meta name="description" content="" />
     <link href="http://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet" />
     <link href="{{ asset("assets/default.css")}}" rel="stylesheet" type="text/css" media="all" />
-    <link href="{{ asset("assets/fonts.css")}}" rel="stylesheet" type="text/css" media="all" />
-</head>
+    <link href="{{ asset("assets/fonts.css")}}" rel="stylesheet" type="text/css" media="all" /></head>
 <body>
 <div id="header-wrapper">
 	<div id="header" class="container">
@@ -29,14 +28,23 @@
 	<div id="banner" class="container">
 		<div class="title">
 			<h2>Payment Management System</h2>
-			<span class="byline">Donec pulvinar ullamcorper metus</span>
+			<span class="byline">Helping you make your payments online and records them.</span></span>
 		</div>
-		<ul class="actions">
-			<li><a href="#" class="button">Pulvinar mollis</a></li>
-		</ul>
+
+        @isset($message)
+            <div style="color: red"><h3>{{$message}}</h3></div>
+        @endisset
+
+		<form action="{{route("make_payment")}}" method="POST" class="actions">
+            @csrf
+            <div>
+                <textarea name="purpose" placeholder="What are you paying for?" cols="60" rows="5"></textarea>
+            </div>
+			<button type="submit" class="button">Make Payment</button>
+		</form>
 	</div>
 </div>
-<div id="wrapper">
+{{-- <div id="wrapper">
 	<div id="three-column" class="container">
 		<div class="title">
 			<h2>Feugiat lorem ipsum dolor sed veroeros</h2>
@@ -70,6 +78,6 @@
 </div>
 <div id="copyright" class="container">
 	<p>&copy; Untitled. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>
-</div>
+</div> --}}
 </body>
 </html>
