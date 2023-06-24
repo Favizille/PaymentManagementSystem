@@ -24,4 +24,8 @@ class PaymentController extends Controller
         return view('index', ['message' => $response['message']]);
 
     }
+
+    public function payments(){
+
+    }
 }

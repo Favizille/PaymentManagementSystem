@@ -22,7 +22,8 @@ class PaymentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "purpose" => "required"
+            "purpose" => "required",
+            "user_id" => "required"
         ];
     }
 }
