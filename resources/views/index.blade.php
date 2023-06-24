@@ -37,9 +37,12 @@
 
 		<form action="{{route("make_payment")}}" method="POST" class="actions">
             @csrf
+
             <div>
-                <textarea name="purpose" placeholder="What are you paying for?" cols="60" rows="5"></textarea>
+                <input name="user_id" value={{auth()->user()->id}} hidden>
+                <textarea name="purpose" placeholder="What are you paying for?" cols="60" rows="5" required></textarea>
             </div>
+
 			<button type="submit" class="button">Make Payment</button>
 		</form>
 	</div>
