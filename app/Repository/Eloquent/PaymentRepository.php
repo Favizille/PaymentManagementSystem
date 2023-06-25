@@ -16,15 +16,19 @@ class paymentRepository extends BaseRepository
         $this->user = $user;
     }
 
-    public function makePayment($data)
-    {
-
+    private function unauthorizedUser(){
         if(!auth()->user()){
             return [
                 "status" => $this->fail(),
                 "message" => "Unauthorised User"
             ];
         }
+    }
+
+    public function makePayment($data)
+    {
+
+        $this->unauthorizedUser();
 
         if(!$this->payment->create($data)){
             return [
@@ -37,5 +41,48 @@ class paymentRepository extends BaseRepository
             "status" => $this->success(),
             "message" => "Payment Successful",
         ];
+    }
+
+    public function payments()
+    {
+        $this->unauthorizedUser();
+
+        if(!$this->payment->find(auth()->user()->id)){
+             return [
+                "status" => $this->fail(),
+                "message" => "No Payment Found"
+             ];
+        }
+
+        return $this->payment->where('user_id', auth()->user()->id)->get();
+    }
+
+    public function updatePayment($paymentId)
+    {
+        $this->unauthorizedUser();
+
+        if(!$this->payment->find($paymentId)){
+            return [
+                "status" => $this->fail(),
+                "message" => "No Payment Found"
+             ];
+        };
+
+        return $this->payment->find($paymentId)->update()->all();
+
+    }
+
+    public function delete($paymentId)
+    {
+        $this->unauthorizedUser();
+
+        if(!$this->payment->find($paymentId)){
+            return [
+                "status" => $this->fail(),
+                "message" => "No Payment Found"
+             ];
+        };
+
+        return $this->payment->find($paymentId)->delete();
     }
 }

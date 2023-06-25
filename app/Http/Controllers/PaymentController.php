@@ -14,9 +14,6 @@ class PaymentController extends Controller
     {
         $this->paymentRepository = $paymentRepository;
     }
-    public function index(){
-        return view('index');
-    }
 
     public function makePayment(PaymentRequest $request){
         $response = $this->paymentRepository->makePayment($request->validated());
@@ -25,7 +22,24 @@ class PaymentController extends Controller
 
     }
 
-    public function payments(){
+    public function payments()
+    {
+        $response = $this->paymentRepository->payments();
 
+        return view('transaction-records', ["payments" => $response]);
+    }
+
+    public function updatePayment($paymentId)
+    {
+        $this->paymentRepository->updatePayment($paymentId);
+
+        return redirect()->back()->with(["message" => "Updated successfully"]);
+    }
+
+    public function deletePayment($paymentId)
+    {
+        $this->paymentRepository->delete($paymentId);
+
+        return redirect()->back()->with(["message" => "Deleted successfully"]);
     }
 }

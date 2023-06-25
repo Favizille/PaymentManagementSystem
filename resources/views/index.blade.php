@@ -9,6 +9,7 @@
     <link href="http://fonts.googleapis.com/css?family=Didact+Gothic" rel="stylesheet" />
     <link href="{{ asset("assets/default.css")}}" rel="stylesheet" type="text/css" media="all" />
     <link href="{{ asset("assets/fonts.css")}}" rel="stylesheet" type="text/css" media="all" /></head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <body>
 <div id="header-wrapper">
 	<div id="header" class="container">
@@ -20,8 +21,10 @@
 				<li class="active"><a href="#" accesskey="1" title="">Homepage</a></li>
 				<li><a href="#" accesskey="2" title="">Profile</a></li>
 				<li><a href="#" accesskey="3" title="">About Us</a></li>
-				<li><a href="#" accesskey="4" title="">Payments</a></li>
+				<li><a href="{{route('payments')}}" accesskey="4" title="">Payments</a></li>
 				<li><a href="#" accesskey="5" title="">Contact Us</a></li>
+				<li><form action="{{route("logout")}}" method="POST">@csrf<button><i class="fa fa-power-off" style="font-size:12px;color:red"></i></button></form></li>
+
 			</ul>
 		</div>
 	</div>
