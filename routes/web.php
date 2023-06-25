@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\TransactionController;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
@@ -25,14 +26,21 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 Route::middleware('auth')->group(function () {
-    Route::get("/payment-site", [PaymentController::class, 'index']);
+    Route::get("/payment-site", [TransactionController::class, 'index'])->name('payment_site');
+
+
     Route::post('/payment', [PaymentController::class, 'makePayment'])->name('make_payment');
     Route::get('/payments', [PaymentController::class, 'payments'])->name('payments');
+    Route::put('/payment_update/{paymentId}', [PaymentController::class, 'updatePayment'])->name('update_payment');
+    Route::delete('/payment', [PaymentController::class, 'deletePayment'])->name('delete_payment');
 });
 
 
 
+
 //to do
+// . UI for payments
 // 1. Payment CRUD
 // 2. Payment service
 // 3. Profile
+
