@@ -39,8 +39,6 @@ Route::middleware('auth')->group(function () {
 
 
 //to do
-// . UI for payments
-// 1. Payment CRUD
 // 2. Payment service
 // 3. Profile
 

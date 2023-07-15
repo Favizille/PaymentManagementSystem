@@ -3,16 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PaymentRequest;
-use App\Repository\Eloquent\paymentRepository;
-use Illuminate\Http\Request;
+use App\Repository\Eloquent\PaymentRepository;
 
 class PaymentController extends Controller
 {
-    protected $paymentRepository;
-
-    public function __construct(paymentRepository $paymentRepository)
+    public function __construct(protected PaymentRepository $paymentRepository)
     {
-        $this->paymentRepository = $paymentRepository;
+
     }
 
     public function makePayment(PaymentRequest $request){
