@@ -1,20 +1,17 @@
 <?php
 namespace App\Repository\Eloquent;
 
-use App\Models\Payment;
+use Stripe\Stripe;
 use App\Models\User;
+use App\Models\Payment;
+use Stripe\Checkout\Session;
+use App\Services\StripeService;
 use App\Repository\BaseRepository;
 
-class paymentRepository extends BaseRepository
+class PaymentRepository extends BaseRepository
 {
-    protected $payment;
-    protected $user;
 
-    public function __construct(Payment $payment, User $user)
-    {
-        $this->payment = $payment;
-        $this->user = $user;
-    }
+    public function __construct(protected Payment $payment, protected User $user, private StripeService $paymentService){}
 
     private function unauthorizedUser(){
         if(!auth()->user()){
@@ -27,15 +24,21 @@ class paymentRepository extends BaseRepository
 
     public function makePayment($data)
     {
-
         $this->unauthorizedUser();
 
-        if(!$this->payment->create($data)){
-            return [
-                "status" => $this->fail(),
-                "message" => "Payment Failed"
-            ];
-        };
+        Stripe::setApiKey(config("stripe.sk"));
+
+        // $this->paymentService->charge(auth()->user(), $data);
+
+        $session = Session::create($data);
+
+
+        // if(!$this->payment->create($data)){
+        //     return [
+        //         "status" => $this->fail(),
+        //         "message" => "Payment Failed"
+        //     ];
+        // };
 
         return [
             "status" => $this->success(),

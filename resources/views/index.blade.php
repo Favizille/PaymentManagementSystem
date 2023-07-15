@@ -31,7 +31,7 @@
 	<div id="banner" class="container">
 		<div class="title">
 			<h2>Payment Management System</h2>
-			<span class="byline">Helping you make your payments online and records them.</span></span>
+			<span class="byline">Helping you make your payments online and record them.</span>
 		</div>
 
         @isset($message)
