@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SalesController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ResetPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +21,12 @@ Route::get('/', function () {
     return view('home');
 });
 
-//TO DO
-// 1. Change piture on home page
-// 2. Add Authentication Pages
-// 3. Work on UI  for Catelog
-// 4. Add the user Dashboard
+Route::get('/signIn', [LoginController::class, 'login'])->name('login');
+Route::get('/signUp', [RegisterController::class, "register"])->name('register');
+Route::get ('/catalog', [SalesController::class, 'catalog'])->name('catalog');
+
+Route::get("/forget-password", [ResetPasswordController::class, "forgetPassword"])->name("password.forget");
+Route::get("/reset-password", [ResetPasswordController::class, "resetPasswordView"])->name("password.reset")->middleware('signed');
+Route::post("/reset-link", [ResetPasswordController::class, 'sendLink'])->name("link.send");
+Route::post("/reset-password", [ResetPasswordController::class, 'resetPassword'])->name("password.reset");
+
