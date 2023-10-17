@@ -22,20 +22,24 @@
                     <h3 class="text-nowrap d-block pt-3"><b>POCKETPILL</b></h3>
                     <h5>Sign Up</h5>
                 </div>
-                <form>
+                <form action=" {{ route("registration") }} " method="POST">
+                    @csrf
                     <div class="mb-3">
-                      <input type="text" class="form-control" placeholder="First Name" name="first_name">
+                      <input type="text" class="form-control" placeholder="First Name" name="first_name" required>
                     </div>
                     <div class="mb-3">
-                      <input type="text" class="form-control" placeholder="Last Name" name="last_name">
+                      <input type="text" class="form-control" placeholder="Last Name" name="last_name" required>
                     </div>
                     <div class="mb-3">
-                      <input type="email" class="form-control" placeholder="Email" name="email">
+                        <input type="email" class="form-control" placeholder="Email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                      <input type="text" class="form-control" placeholder="Phone Number" name="phone_number" required>
                     </div>
                     <div class="mb-4">
-                      <input type="password" class="form-control" placeholder="Password" name="password">
+                      <input type="password" class="form-control" placeholder="Password" name="password" required>
                     </div>
-                    <a href="" class="btn btn-primary w-100 py-8 fs-4 mb-3 rounded-2">Sign Up</a>
+                    <a href="" ><button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-3 rounded-2">Sign Up</button></a>
 
                     <div class="d-flex align-items-center justify-content-center mb-3">
                       <a class="text-primary fw-bold ms-2" href="{{route("login")}}">Already have an account? SignIn</a>

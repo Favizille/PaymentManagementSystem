@@ -22,11 +22,12 @@ Route::get('/', function () {
 });
 
 Route::get('/signIn', [LoginController::class, 'login'])->name('login');
+Route::get('/signIn', [LoginController::class, 'logginIn'])->name('loggingIn');
 Route::get('/signUp', [RegisterController::class, "register"])->name('register');
+Route::post('/signUp', [RegisterController::class, "registration"])->name('registration');
 Route::get ('/catalog', [SalesController::class, 'catalog'])->name('catalog');
 
 Route::get("/forget-password", [ResetPasswordController::class, "forgetPassword"])->name("password.forget");
 Route::get("/reset-password", [ResetPasswordController::class, "resetPasswordView"])->name("password.reset")->middleware('signed');
 Route::post("/reset-link", [ResetPasswordController::class, 'sendLink'])->name("link.send");
 Route::post("/reset-password", [ResetPasswordController::class, 'resetPassword'])->name("password.reset");
-
