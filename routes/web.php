@@ -28,6 +28,6 @@ Route::post('/signUp', [RegisterController::class, "registration"])->name('regis
 Route::get ('/catalog', [SalesController::class, 'catalog'])->name('catalog');
 
 Route::get("/forget-password", [ResetPasswordController::class, "forgetPassword"])->name("password.forget");
-Route::get("/reset-password", [ResetPasswordController::class, "resetPasswordView"])->name("password.reset")->middleware('signed');
+Route::get("/reset-password", [ResetPasswordController::class, "resetPasswordView"])->name("password.reset.view")->middleware('signed');
 Route::post("/reset-link", [ResetPasswordController::class, 'sendLink'])->name("link.send");
 Route::post("/reset-password", [ResetPasswordController::class, 'resetPassword'])->name("password.reset");

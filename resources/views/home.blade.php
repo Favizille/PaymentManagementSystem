@@ -29,7 +29,7 @@
           <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0 " id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto pt-2 pt-lg-0 font-base">
             </ul>
-            <a class="btn btn-sm btn-outline-primary rounded-pill order-1 order-lg-0 ms-lg-4" href="{{ route("login") }}">Sign In</a>
+            <a class="btn btn-sm btn-outline-primary rounded-pill order-1 order-lg-0 ms-lg-4" href="">Sign In</a>
           </div>
         </div>
       </nav>
@@ -42,7 +42,7 @@
             <div class="col-md-5 col-xl-6 col-xxl-7 order-0 order-md-1 text-end"><img class="pt-7 pt-md-0 w-100 rounded-circle" src="https://media.istockphoto.com/id/1340144996/photo/senior-couple-having-online-medical-consultation-with-doctor-telemedicine-concept.jpg?s=612x612&w=0&k=20&c=YA6edetyVxigmJnIxa396bfLqyX9gyLvqAtYP46RbSU=" alt="hero-header" /></div>
             <div class="col-md-75 col-xl-6 col-xxl-5 text-md-start text-center py-6">
               <h1 class="fw-light font-base fs-6 fs-xxl-7">We're <strong>determined </strong>for<br />your&nbsp;<strong>better life.</strong></h1>
-              <p class="fs-1 mb-5">Get the drug, medicine or pill you need just with few clicks. <br /> Buy reliable drugs here and get yourself back to good health.</p><a class="mt-5 btn btn-lg btn-primary rounded-pill" href="{{ route("login") }}" role="button">Get Started</a>
+              <p class="fs-1 mb-5">Get the drug, medicine or pill you need just with few clicks. <br /> Buy reliable drugs here and get yourself back to good health.</p><a class="mt-5 btn btn-lg btn-primary rounded-pill" href="" role="button">Get Started</a>
             </div>
           </div>
         </div>
